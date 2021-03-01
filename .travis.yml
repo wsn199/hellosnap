@@ -1,0 +1,31 @@
+language: shell
+dist: focal
+os: linux
+env:
+  global:
+  - SNAPCRAFT_BUILD_ENVIRONMENT: lxd
+before_install:
+- openssl aes-256-cbc -K $encrypted_164ead62e292_key -iv $encrypted_164ead62e292_iv -in snap.login.enc -out snap.login -d
+addons:
+  snaps:
+  - name: snapcraft
+    channel: stable
+    confinement: classic
+  - name: lxd
+    channel: stable
+script:
+- 
+- sudo usermod --append --groups lxd $USER
+- groups
+- sudo /snap/bin/lxd.migrate -yes
+- sudo /snap/bin/lxd waitready
+- sudo /snap/bin/lxd init --auto
+- sg lxd -c snapcraft
+- echo " ----Deploy-----"
+- snapcraft login --with snap.login
+- snapcraft whoami
+- snapcraft upload --release=edge hello-masahiro_0.1_amd64.snap
+after_failure:
+- sudo journalctl -u snapd
+after_success:
+
