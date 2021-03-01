@@ -17,7 +17,6 @@ script:
 - 
 - sudo usermod --append --groups lxd $USER
 - groups
-- sudo /snap/bin/lxd.migrate -yes
 - sudo /snap/bin/lxd waitready
 - sudo /snap/bin/lxd init --auto
 - sg lxd -c snapcraft
@@ -28,4 +27,4 @@ script:
 after_failure:
 - sudo journalctl -u snapd
 after_success:
-
+ 
