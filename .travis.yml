@@ -17,7 +17,8 @@ addons:
   - name: lxd
     channel: stable
 script:
-- 
+- uname -m
+- which lxd 
 - sudo usermod --append --groups lxd $USER
 - groups
 - sudo /snap/bin/lxd waitready
