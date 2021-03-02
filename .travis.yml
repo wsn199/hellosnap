@@ -19,12 +19,13 @@ addons:
 script:
 - uname -m
 - which lxd 
+- snap info lxd
 - sudo usermod --append --groups lxd $USER
 - groups
 - sudo /snap/bin/lxd waitready
 - sudo /snap/bin/lxd init --auto
 - sudo lxc list
-- sg lxd -c snapcraft
+- snapcraft
 - echo " ----Deploy-----"
 - snapcraft login --with snap.login
 - snapcraft whoami
