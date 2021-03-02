@@ -22,6 +22,7 @@ script:
 - groups
 - sudo /snap/bin/lxd waitready
 - sudo /snap/bin/lxd init --auto
+- sudo lxc list
 - sg lxd -c snapcraft
 - echo " ----Deploy-----"
 - snapcraft login --with snap.login
