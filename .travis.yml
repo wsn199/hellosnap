@@ -6,7 +6,6 @@ arch:
 - arm64
 env:
   global:
-  - SNAPCRAFT_BUILD_ENVIRONMENT: lxd
 before_install:
 - openssl aes-256-cbc -K $encrypted_164ead62e292_key -iv $encrypted_164ead62e292_iv -in snap.login.enc -out snap.login -d
 addons:
@@ -19,13 +18,15 @@ addons:
 script:
 - uname -m
 - which lxd 
-- snap info lxd
+- ls 
+- cat /etc/passwd
+- cat /etc/group
 - sudo usermod --append --groups lxd $USER
 - groups
 - sudo /snap/bin/lxd waitready
 - sudo /snap/bin/lxd init --auto
 - sudo lxc list
-- snapcraft --use-lxd
+- snapcraft 
 - echo " ----Deploy-----"
 - snapcraft login --with snap.login
 - snapcraft whoami
