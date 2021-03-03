@@ -33,7 +33,7 @@ script:
 - echo " ----Deploy-----"
 - snapcraft login --with snap.login
 - snapcraft whoami
-- snapcraft upload --release=edge hello-masahiro_0.1_amd64.snap
+- snapcraft upload --release=edge hello-masahiro_0.1_arm64.snap
 after_failure:
 - sudo journalctl -u snapd
 after_success:
