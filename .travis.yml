@@ -1,16 +1,11 @@
 language: shell
 dist: focal
 os: linux
+virt: vm
+group: edge
 arch:
 - amd64
-- arm64
-jobs:
-  include:
-   - os: linux
-     arch: amd64
-   - os: linux
-     arch: arm64-graviton2
-     virt: lxd
+- arm64-graviton2
 
 env:
   global:
