@@ -4,7 +4,6 @@ os: linux
 virt: vm
 group: edge
 arch:
-- amd64
 - arm64-graviton2
 
 env:
@@ -16,7 +15,7 @@ addons:
   - name: snapcraft
     channel: stable
     confinement: classic
-  - name: multipass
+  - name: lxd
     channel: stable
 
 
