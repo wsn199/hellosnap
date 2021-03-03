@@ -18,7 +18,6 @@ addons:
   - name: lxd
     channel: stable
 
-
 script:
 - uname -m
 - which lxd 
@@ -30,7 +29,7 @@ script:
 - sudo /snap/bin/lxd waitready
 - sudo /snap/bin/lxd init --auto
 - sudo lxc list
-- snapcraft 
+- snapcraft --use-lxd
 - echo " ----Deploy-----"
 - snapcraft login --with snap.login
 - snapcraft whoami
