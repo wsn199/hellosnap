@@ -22,18 +22,16 @@ script:
 - uname -m
 - which lxd 
 - ls 
-- cat /etc/passwd
-- cat /etc/group
 - sudo usermod --append --groups lxd $USER
 - groups
 - sudo /snap/bin/lxd waitready
 - sudo /snap/bin/lxd init --auto
 - sudo lxc list
-- sudo snapcraft --use-lxd
+- sg lxd -c snapcraft --use-lxd
 - echo " ----Deploy-----"
 - snapcraft login --with snap.login
 - snapcraft whoami
-- snapcraft upload --release=edge hello-masahiro_0.1_arm64.snap
+- snapcraft push hello-masahiro_0.1_arm64.snap
 after_failure:
 - sudo journalctl -u snapd
 after_success:
